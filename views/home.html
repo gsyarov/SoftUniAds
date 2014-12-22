@@ -1,3 +1,39 @@
 <div ng-controller="HomeController">
 	<h1 class="text-center">Home</h1>
+	<div class="col-md-2 pull-left">
+		<div class="list-group text-center">
+			<h1>Categories</h1>
+            <a ng-repeat="category in categories" class="list-group-item" href="#/">
+            	{{category.name}}
+            </a>
+		</div>
+	</div>
+	<div  class="col-md-8">
+		<div ng-repeat="ad in ads">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">{{ad.title}}</h3>
+					<p class="pull-right date">{{ad.date | date : format : timezone}}</p>
+				</div>
+				<div class="panel-body">
+					<img class="img-home well" ng-if="!ad.imageDataUrl" src="http://spasitelbg.com/uploads/no_img.jpg">
+					<img class="img-home well" ng-if="ad.imageDataUrl" ng-src="{{ad.imageDataUrl}}">
+					<div class="well ad-info">
+						<p>{{ad.text}}</p>
+						<p>Name : {{ad.ownerName}}</p>
+						<p>Email : {{ad.ownerEmail}}</p>
+						<p>Phone : {{ad.ownerPhone}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-2 pull-right">
+		<div class="list-group text-center">
+			<h1>Towns</h1>
+            <a ng-repeat="town in towns" class="list-group-item" href="#/">
+            	{{town.name}}
+            </a>
+		</div>
+	</div>
 </div>

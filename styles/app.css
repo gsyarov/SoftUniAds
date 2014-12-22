@@ -2,3 +2,16 @@ body {
     overflow-x: hidden;
     margin-top: 60px;
 }
+
+.img-home {
+	float: left;
+	width: 190px;
+}
+
+.date {
+	margin-top: -18px;
+}
+
+.ad-info {
+	margin-left: 200px;
+}
