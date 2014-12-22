@@ -1,10 +1,10 @@
 'use strict';
 
 adsApp.factory('Ads', function($resource) {
-	var resource = $resource('http://softuni-ads.azurewebsites.net/api/ads');
+	var resource = $resource('http://softuni-ads.azurewebsites.net/api/ads?PageSize=:Size&StartPage=:Page', {Size:'@Size',Page:'@Page'});
 	return {
-		getAllAds: function() {
-			return resource.get();
+		getAllAds: function(size, page) {
+			return resource.get({Size:size,Page:page});
 		}
 	}
 
