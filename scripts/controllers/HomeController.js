@@ -2,7 +2,7 @@
 
 adsApp.controller('HomeController',
 	function HomeController($scope, Ads, Categories, Towns) {		
-		Ads.getAllAds(1, 1).$promise.then(function (ads) {
+		Ads.getAllAds(3, 1).$promise.then(function (ads) {
 			//console.log(ads);
 			$scope.ads = ads.ads;
 			var pages = [];
@@ -13,7 +13,7 @@ adsApp.controller('HomeController',
 		});
 
 		$scope.toPage = function(page){
-			Ads.getAllAds(1, page).$promise.then(function (ads) {
+			Ads.getAllAds(3, page).$promise.then(function (ads) {
 				//console.log(ads);
 				$scope.ads = ads.ads;
 				var pages = [];
