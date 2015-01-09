@@ -9,7 +9,7 @@
 		</div>
 	</div>
 	<div  class="col-md-8">
-		<div ng-repeat="ad in ads">
+		<div ng-repeat="ad in ads.ads">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
 					<h3 class="panel-title">{{ad.title}}</h3>
@@ -28,9 +28,10 @@
 			</div>
 		</div>
 		<nav class="text-center">
-			<ul class="pagination">
-				<li ng-repeat="page in pages"><a href="#/" ng-click="toPage(page)">{{page}}</a></li>
-			</ul>
+			<pagination total-items="ads.numItems" ng-model="adsParams.startPage"
+			  items-per-page="adsParams.pageSize" ng-change="reloadAds()"
+			  max-size="9" boundary-links="true">
+			</pagination>
 		</nav>
 	</div>
 	<div class="col-md-2 pull-right">

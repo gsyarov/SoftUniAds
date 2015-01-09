@@ -1,10 +1,10 @@
 'use strict';
 
 adsApp.factory('Ads', function($resource) {
-	var resource = $resource('http://softuni-ads.azurewebsites.net/api/ads?PageSize=:Size&StartPage=:Page', {Size:'@Size',Page:'@Page'});
+	var resource = $resource('http://softuni-ads.azurewebsites.net/api/ads');
 	return {
-		getAllAds: function(size, page) {
-			return resource.get({Size:size,Page:page});
+		getAllAds: function(params, success, error) {
+			return resource.get(params, success, error);
 		}
 	}
 
@@ -13,8 +13,8 @@ adsApp.factory('Ads', function($resource) {
 adsApp.factory('Categories', function($resource) {
 	var resource = $resource('http://softuni-ads.azurewebsites.net/api/Categories');
 	return {
-		getAllCategories: function() {
-			return resource.query();
+		getAllCategories: function(success, error) {
+			return resource.query(success, error);
 		}
 	}
 
@@ -23,8 +23,8 @@ adsApp.factory('Categories', function($resource) {
 adsApp.factory('Towns', function($resource) {
 	var resource = $resource('http://softuni-ads.azurewebsites.net/api/Towns');
 	return {
-		getAllTowns: function() {
-			return resource.query();
+		getAllTowns: function(success, error) {
+			return resource.query(success, error);
 		}
 	}
 

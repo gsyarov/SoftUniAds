@@ -1,40 +1,44 @@
 'use strict';
 
 adsApp.controller('HomeController',
-	function HomeController($scope, Ads, Categories, Towns) {		
-		Ads.getAllAds(3, 1).$promise.then(function (ads) {
-			//console.log(ads);
-			$scope.ads = ads.ads;
-			var pages = [];
-			for (var i = 0; i < ads.numPages; i++) {
-				pages[i] = i+1;
-			};
-			$scope.pages = pages;
-		});
+	function HomeController($scope, Ads, Categories, Towns, pageSize) {	
 
-		$scope.toPage = function(page){
-			Ads.getAllAds(3, page).$promise.then(function (ads) {
-				//console.log(ads);
-				$scope.ads = ads.ads;
-				var pages = [];
-				for (var i = 0; i < ads.numPages; i++) {
-					pages[i] = i+1;
-				};
-				$scope.pages = pages;
-			});
-		}
+		$scope.adsParams = {
+			'startPage' : 1,
+			'pageSize' : pageSize
+		};
 
+		$scope.reloadAds = function() {
+			Ads.getAllAds(
+              $scope.adsParams,
+              function success(data) {
+                  	$scope.ads = data;
+              },
+              function error(err) {
+                	//TODO
+              }
+          );
+		};
+
+		$scope.reloadAds();
 		
 
-		Categories.getAllCategories().$promise.then(function (categories) {
-			//console.log(categories);
-			$scope.categories = categories;
-		});
+		Categories.getAllCategories(
+			function success(data) {
+                //console.log(data);
+				$scope.categories = data;
+            },
+            function error(err) {
+                //TODO
+            });
 
-		Towns.getAllTowns().$promise.then(function (towns) {
-			//console.log(towns);
-			$scope.towns = towns;
-		});
+		Towns.getAllTowns(function success(data) {
+                //console.log(data);
+				$scope.towns = data;
+            },
+            function error(err) {
+                //TODO
+            });
 
 	}
-);
+	);

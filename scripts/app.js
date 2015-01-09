@@ -1,14 +1,14 @@
 'use strict';
 
 var adsApp = angular
-.module('adsApp', ['ngResource', 'ngRoute'])
+.module('adsApp', ['ngResource', 'ngRoute', 'ui.bootstrap.pagination'])
 .config(function($routeProvider) {
 	$routeProvider
 	.when('/', {
-		templateUrl: 'views/home.html'
+		templateUrl: 'templates/home.html'
 	})
 	.when('/login', {
-		templateUrl: 'views/login.html'
+		templateUrl: 'templates/login.html'
 	})
 	.otherwise({redirectTo: '/'});
-});
+}).constant('pageSize', 3);
