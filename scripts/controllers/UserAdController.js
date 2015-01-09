@@ -1,7 +1,7 @@
 'use strict';
 
 adsApp.controller('UserAdController',
-	function UserAdController($scope, Ads, Categories, Towns, pageSize) {	
+	function UserAdController($scope, $http, UserAds, Categories, Towns, pageSize) {	
 
 		$scope.adsParams = {
 			'startPage' : 1,
@@ -9,15 +9,22 @@ adsApp.controller('UserAdController',
 		};
 
 		$scope.reloadAds = function() {
-			Ads.getAllAds(
-              $scope.adsParams,
-              function success(data) {
-                  	$scope.ads = data;
-              },
-              function error(err) {
-                	//TODO
-              }
-          );
+			var request = {
+                    method: 'GET',
+                    url: 'http://softuni-ads.azurewebsites.net/api/user/Ads',
+                    params: $scope.adsParams
+                    ,
+                    headers: {
+                      'Authorization': sessionStorage.header
+                    }
+                };
+      $http(request).
+          success(function(data, status, headers, config) {
+            $scope.ads = data;
+          }).
+          error(function(data, status, headers, config) {
+            console.log(data);//notifyService.showError("User registration failed", data);
+          });
 		};
 
 		$scope.reloadAds();
