@@ -1,0 +1,46 @@
+<div ng-controller="PublishAdController" >
+	<form class="form-horizontal col-md-offset-2 col-md-6" ng-submit="publishAd(ad)"  novalidate>
+		<fieldset>
+			<legend>Publish New Ad</legend>
+			<div class="form-group">
+				<label for="inputTitle" class="col-lg-2 control-label">Title</label>
+				<div class="col-lg-10">
+					<input class="form-control" id="inputTitle" placeholder="Title" type="text" ng-model="ad.title">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="text" class="col-lg-2 control-label">Text</label>
+				<div class="col-lg-10">
+					<textarea class="form-control" rows="3" id="text" ng-model="ad.text"></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">Image</label>
+				<div class="col-lg-10">
+					<input type="file" ng-model="ad.imageDataURL" accept="image/*" app-filereader />
+				</div>
+				<img class="col-md-offset-3 col-md-3" src="{{ad.imageDataURL}}">
+			</div>
+			<div class="form-group">
+				<label for="select" class="col-lg-2 control-label">Category</label>
+				<div class="col-lg-10">
+					<select class="form-control" id="select" ng-options="category.id as category.name for category in categories" ng-model="ad.categoryId">	
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="select" class="col-lg-2 control-label">Town</label>
+				<div class="col-lg-10">
+					<select class="form-control" id="select" ng-options="town.id as town.name for town in towns" ng-model="ad.townId">	
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-lg-10 col-lg-offset-2">
+					<button class="btn btn-default">Cancel</button>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>
