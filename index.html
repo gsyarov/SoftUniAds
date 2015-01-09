@@ -15,7 +15,7 @@
 		<div class="navbar navbar-default navbar-fixed-top" ng-controller="NavbarController">
 			<div class="container">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="#/">Bootswatch</a>
+					<a class="navbar-brand" href="#/">SoftUni</a>
 					<button data-target="#navbar-main" data-toggle="collapse" type="button" class="navbar-toggle">
 					</button>
 				</div>
@@ -26,7 +26,7 @@
 						</li>
 					</ul>
 
-					<ul class="nav navbar-nav navbar-right">
+					<ul class="nav navbar-nav navbar-right" ng-hide="Auth.isLoggedIn()">
 						<li ng-class="{ active: isActive('/login')}">
 							<a href="#/login">Login</a>
 						</li>
@@ -34,18 +34,14 @@
 							<a href="#/register">Register</a>
 						</li>
 					</ul>
-					<ul class="nav navbar-nav navbar-right">
+					<ul class="nav navbar-nav navbar-right" ng-show="Auth.isLoggedIn()">
 						<li class="dropdown">
-							<a id="download" href="#/" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false">{{username}} <span class="caret"></span></a>
+							<a id="download" href="#/" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false">{{Auth.getCurrentUser()}} <span class="caret"></span></a>
 							<ul aria-labelledby="download" class="dropdown-menu">
 								<li><a href="./bootstrap.min.css">bootstrap.min.css</a></li>
 								<li><a href="./bootstrap.css">bootstrap.css</a></li>
 								<li class="divider"></li>
-								<li><a href="./variables.less">variables.less</a></li>
-								<li><a href="./bootswatch.less">bootswatch.less</a></li>
-								<li class="divider"></li>
-								<li><a href="./_variables.scss">_variables.scss</a></li>
-								<li><a href="./_bootswatch.scss">_bootswatch.scss</a></li>
+								<li><a href="#/" ng-click="logout()">Logout</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -70,6 +66,7 @@
 
 	<script src="scripts/services/HomeData.js"></script>
 	<script src="scripts/services/Login.js"></script>
+	<script src="scripts/services/Authorization.js"></script>
 
 	<script src="scripts/controllers/HomeController.js"></script>
 	<script src="scripts/controllers/LoginController.js"></script>
