@@ -10,5 +10,8 @@ var adsApp = angular
 	.when('/login', {
 		templateUrl: 'templates/login.html'
 	})
+	.when('/register', {
+		templateUrl: 'templates/register.html'
+	})
 	.otherwise({redirectTo: '/'});
 }).constant('pageSize', 3);

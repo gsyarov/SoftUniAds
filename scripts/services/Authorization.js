@@ -12,18 +12,15 @@ adsApp.factory('Auth', function(Logout, $location) {
 			}
 		},
 		logout: function() {
-			if((sessionStorage.header !== undefined) && (sessionStorage.username !== undefined)){
-				Logout.logout(
-				function success(data) {
-                  	sessionStorage.clear();
-              	},
-              	function error(err) {
-                	//TODO
-              	});
-				$location.path('/')
-			}else {
-				$location.path('/')
-			}
+			Logout.logout(
+			function success(data) {
+              	sessionStorage.clear();
+              	$location.path('/')
+          	},
+          	function error(err) {
+            	//TODO
+          	});
+
 		},
 		getCurrentUser: function() {
 			return sessionStorage.username;

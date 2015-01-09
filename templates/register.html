@@ -1,0 +1,69 @@
+<div ng-controller="RegisterController">
+	<h1 class="text-center">Register</h1>
+	<form name="loginForm" ng-submit="register(user)" novalidate class="col-md-offset-4 col-md-4">
+
+		<div class="form-group">
+			<div class="input-group">
+				<span class="input-group-addon">
+					<i class="glyphicon glyphicon-user text-muted"></i>
+				</span>
+				<input type="text" class="form-control" id="username" ng-model="user.username">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="input-group">
+				<span class="input-group-addon">
+					<i class="glyphicon glyphicon-asterisk text-muted"></i>
+				</span>
+				<input type="password" class="form-control" id="password" ng-model="user.password">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="input-group">
+				<span class="input-group-addon">
+					<i class="glyphicon glyphicon-asterisk text-muted"></i>
+				</span>
+				<input type="password" class="form-control" id="confirmPassword" ng-model="user.confirmPassword">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="input-group">
+				<span class="input-group-addon">
+					<i class="glyphicon glyphicon-font text-muted"></i>
+				</span>
+				<input type="text" class="form-control" id="name" ng-model="user.name">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="input-group">
+				<span class="input-group-addon">
+					<i class="glyphicon glyphicon-envelope text-muted"></i>
+				</span>
+				<input type="email" class="form-control" id="email" ng-model="user.email">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="input-group">
+				<span class="input-group-addon">
+					<i class="glyphicon glyphicon-phone text-muted"></i>
+				</span>
+				<input type="text" class="form-control" id="phone" ng-model="user.phone">
+			</div>
+		</div>
+
+		<div class="reg-town">
+			<select class="form-control" ng-options="town.id as town.name for town in towns" ng-model="user.townId">	
+			</select>
+		</div>
+
+		<div class="text-center form-group">
+			<button type="submit" class="btn btn-success btn-block">Register</button>
+		</div>
+
+	</form>
+</div>
