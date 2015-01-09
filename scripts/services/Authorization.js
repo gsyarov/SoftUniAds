@@ -1,15 +1,18 @@
 'use strict';
 
-adsApp.factory('Auth', function(Logout, $location) {
+adsApp.factory('Auth', function(Logout, $location, notifyService) {
 	return {
 		login: function(token, username) {
-			if((token != null) && (username != null)){
 				sessionStorage.header = token;
 				sessionStorage.username = username;
+				notifyService.showInfo("Login successful");
 				$location.path('/')
-			}else {
-				$location.path('/login')
-			}
+		},
+		register: function(token, username) {
+				sessionStorage.header = token;
+				sessionStorage.username = username;
+				notifyService.showInfo("User registered successfully");
+				$location.path('/')
 		},
 		logout: function() {
 			Logout.logout(

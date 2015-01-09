@@ -25,6 +25,14 @@
 							<a href="#/">Home</a>
 						</li>
 					</ul>
+					<ul class="nav navbar-nav" ng-show="Auth.isLoggedIn()">
+						<li ng-class="{ active: isActive('/user/ads')}">
+							<a href="#/user/ads">My Ads</a>
+						</li>
+						<li ng-class="{ active: isActive('/user/ads/publish')}">
+							<a href="#/user/ads/publish">Publish New Ad</a>
+						</li>
+					</ul>
 
 					<ul class="nav navbar-nav navbar-right" ng-hide="Auth.isLoggedIn()">
 						<li ng-class="{ active: isActive('/login')}">
@@ -61,12 +69,14 @@
 	<script src="lib/jquery.noty/jquery.noty.js"></script>
 	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
 	<script src="lib/ui.bootstrap/ui.bootstrap.pagination-0.12.0.js"></script>
+	<script src="lib/ui.bootstrap/ui.bootstrap.alert.js"></script>
 
 	<script src="scripts/app.js"></script>
 
 	<script src="scripts/services/HomeData.js"></script>
 	<script src="scripts/services/Login.js"></script>
 	<script src="scripts/services/Authorization.js"></script>
+	<script src="scripts/services/Notify.js"></script>
 
 	<script src="scripts/controllers/HomeController.js"></script>
 	<script src="scripts/controllers/LoginController.js"></script>
