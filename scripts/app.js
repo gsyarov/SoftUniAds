@@ -16,5 +16,8 @@ var adsApp = angular
 	.when('/user/ads/publish', {
 		templateUrl: 'templates/user/newAd.html'
 	})
+	.when('/user/ads', {
+		templateUrl: 'templates/home.html'
+	})
 	.otherwise({redirectTo: '/'});
 }).constant('pageSize', 5);
