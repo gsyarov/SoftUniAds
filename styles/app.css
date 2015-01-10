@@ -13,7 +13,15 @@ body {
 }
 
 .ad-info {
-	margin-left: 200px;
+	float: left;
+	margin-left: 10px;
+	width: 480px;
+}
+
+.ad-button {
+	float:left;
+	margin-left: 28px;
+	
 }
 
 .reg-town{

@@ -1,6 +1,15 @@
 <div ng-controller="UserAdController">
 	<h1 class="text-center">My Ads</h1>
-	<div  class="col-md-8 col-md-offset-2">
+	<div class="col-md-2">
+		<div class="list-group">
+			<a class="list-group-item" ng-click="status()">All</a>
+			<a class="list-group-item" ng-click="status(2)">Published</a>
+			<a class="list-group-item" ng-click="status(1)">Waiting Approval</a>
+			<a class="list-group-item" ng-click="status(0)">Inactive</a>
+			<a class="list-group-item" ng-click="status(3)">Rejected</a>
+		</div>
+	</div>
+	<div  class="col-md-8">
 		<div ng-if="ads.ads.length==0" class="box no-data">
 		    No ads found.
 		</div>
@@ -17,6 +26,20 @@
 						<p>{{ad.text}}</p>
 						<p>Category : {{ad.categoryName}}</p>
 						<p>Town : {{ad.townName}}</p>
+					</div>
+					<div class="ad-button text-center" ng-hide="ad.status.indexOf('Inactive') > -1">
+						<strong>Status:</strong>
+						<p>{{ad.status}}</p>
+						<a class="btn btn-primary" ng-click="deactivate(ad.id)">Deactivate</a>
+					</div>
+					<div class="ad-button text-center" ng-hide="ad.status.indexOf('Inactive') <= -1">
+						<strong>Status:</strong>
+						<p>{{ad.status}}</p>
+						<div class="btn-group-vertical">
+							<a href="#/user/ads/edit/{{ad.id}}" class="btn btn-primary">Edit</a>
+							<a class="btn btn-primary" ng-click="publishAgain(ad.id)">Publish Again</a>
+							<a class="btn btn-primary">Delete</a>
+						</div>
 					</div>
 				</div>
 			</div>

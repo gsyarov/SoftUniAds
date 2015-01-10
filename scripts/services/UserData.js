@@ -19,7 +19,8 @@ adsApp.factory('UserAds', function($http) {
 			  	error(function(data, status, headers, config) {
 			    	console.log(data);//notifyService.showError("User registration failed", data);
 			  	});
-		}
+		},
+
 	}
 
 });
