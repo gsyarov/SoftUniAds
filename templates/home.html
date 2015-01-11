@@ -3,7 +3,8 @@
 	<div class="col-md-2 pull-left">
 		<div class="list-group text-center">
 			<h1>Categories</h1>
-            <a ng-repeat="category in categories" class="list-group-item" href="#/">
+			<a class="list-group-item" ng-click="clickCategory()">All</a>
+            <a ng-repeat="category in categories" class="list-group-item" ng-click="clickCategory(category.id);">
             	{{category.name}}
             </a>
 		</div>
@@ -40,7 +41,8 @@
 	<div class="col-md-2 pull-right">
 		<div class="list-group text-center">
 			<h1>Towns</h1>
-            <a ng-repeat="town in towns" class="list-group-item" href="#/">
+			<a class="list-group-item" ng-click="clickTown()">All</a>
+            <a ng-repeat="town in towns" class="list-group-item" ng-click="clickTown(town.id);">
             	{{town.name}}
             </a>
 		</div>

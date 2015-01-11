@@ -21,6 +21,24 @@ adsApp.controller('HomeController',
 		};
 
 		$scope.reloadAds();
+
+    $scope.clickCategory = function(categoryId) {
+      $scope.adsParams = {
+        'startPage' : 1,
+        'pageSize' : pageSize,
+        'categoryId' : categoryId
+      };
+      $scope.reloadAds();
+    }
+
+    $scope.clickTown = function(townId) {
+      $scope.adsParams = {
+        'startPage' : 1,
+        'pageSize' : pageSize,
+        'townId' : townId
+      };
+      $scope.reloadAds();
+    }
 		
 
 		Categories.getAllCategories(
