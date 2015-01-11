@@ -44,10 +44,9 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right" ng-show="Auth.isLoggedIn()">
 						<li class="dropdown">
-							<a id="download" href="#/" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false">{{Auth.getCurrentUser()}} <span class="caret"></span></a>
+							<a data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false">{{Auth.getCurrentUser()}} <span class="caret"></span></a>
 							<ul aria-labelledby="download" class="dropdown-menu">
-								<li><a href="./bootstrap.min.css">bootstrap.min.css</a></li>
-								<li><a href="./bootstrap.css">bootstrap.css</a></li>
+								<li><a href="#/user/profile">Profile</a></li>
 								<li class="divider"></li>
 								<li><a href="#/" ng-click="logout()">Logout</a></li>
 							</ul>
@@ -78,6 +77,7 @@
 	<script src="scripts/services/Authorization.js"></script>
 	<script src="scripts/services/Notify.js"></script>
 	<script src="scripts/services/UserAdData.js"></script>
+	<script src="scripts/services/UserProfile.js"></script>
 
 	<script src="scripts/controllers/HomeController.js"></script>
 	<script src="scripts/controllers/LoginController.js"></script>
@@ -87,9 +87,7 @@
 	<script src="scripts/controllers/UserAdController.js"></script>
 	<script src="scripts/controllers/EditAdController.js"></script>
 	<script src="scripts/controllers/DeleteAdController.js"></script>
-	
-	
-	
+	<script src="scripts/controllers/ProfileController.js"></script>
 
 </body>
 </html>

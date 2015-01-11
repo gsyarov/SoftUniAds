@@ -1,7 +1,7 @@
 'use strict';
 
 adsApp.controller('UserAdController',
-	function UserAdController($scope, $location, $http, UserAds, Categories, Towns, pageSize, notifyService) {	
+	function UserAdController($scope, UserAds, Categories, Towns, pageSize, notifyService) {	
 
 		$scope.adsParams = {
 			'startPage' : 1,
@@ -56,20 +56,21 @@ adsApp.controller('UserAdController',
 
 		Categories.getAllCategories(
 			function success(data) {
-                //console.log(data);
-				$scope.categories = data;
-            },
-            function error(err) {
-                //TODO
-            });
+          //console.log(data);
+	        $scope.categories = data;
+      },
+      function error(err) {
+          //TODO
+      });
 
-		Towns.getAllTowns(function success(data) {
-                //console.log(data);
-				$scope.towns = data;
-            },
-            function error(err) {
-                //TODO
-            });
+		Towns.getAllTowns(
+      function success(data) {
+          //console.log(data);
+	        $scope.towns = data;
+      },
+      function error(err) {
+          //TODO
+      });
 
 	}
 	);

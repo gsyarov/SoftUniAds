@@ -1,0 +1,67 @@
+<div ng-controller="ProfileController" >
+	<form class="form-horizontal col-md-offset-2 col-md-3" ng-submit="editProfile(user)"  novalidate>
+		<fieldset>
+			<legend>Edit Profile</legend>
+			<div class="form-group">
+				<label for="name" class="col-lg-2 control-label">Name</label>
+				<div class="col-lg-10">
+					<input class="form-control" id="name" placeholder="Name" type="text" ng-model="user.name">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="email" class="col-lg-2 control-label">Email</label>
+				<div class="col-lg-10">
+					<input class="form-control" id="email" placeholder="Email" type="email" ng-model="user.email">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="phoneNumber" class="col-lg-2 control-label">Phone</label>
+				<div class="col-lg-10">
+					<input class="form-control" id="phoneNumber" placeholder="Phone" type="text" ng-model="user.phoneNumber">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="select" class="col-lg-2 control-label">Town</label>
+				<div class="col-lg-10">
+					<select class="form-control" id="select" ng-options="town.id as town.name for town in towns" ng-model="user.townId">	
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-lg-10 col-lg-offset-2">
+					<a href="#/" class="btn btn-default">Cancel</a>
+					<button type="submit" class="btn btn-primary">Update</button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+	<form class="form-horizontal col-md-offset-1 col-md-4" ng-submit="changePassword(pass)"  novalidate>
+		<fieldset>
+			<legend>Change Password</legend>
+			<div class="form-group">
+				<label for="oldPass" class="col-lg-2 control-label">Old Password</label>
+				<div class="col-lg-10">
+					<input class="form-control" id="oldPass" placeholder="Old Password" type="password" ng-model="pass.oldPassword">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="newPass" class="col-lg-2 control-label">New Password</label>
+				<div class="col-lg-10">
+					<input class="form-control" id="newPass" placeholder="New Password" type="password" ng-model="pass.newPassword">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="confirmPassword" class="col-lg-2 control-label">Confirm New Password</label>
+				<div class="col-lg-10">
+					<input class="form-control" id="confirmPassword" placeholder="Confirm New Password" type="password" ng-model="pass.confirmPassword">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-lg-10 col-lg-offset-2">
+					<a href="#/" class="btn btn-default">Cancel</a>
+					<button type="submit" class="btn btn-primary">Change Password</button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>
