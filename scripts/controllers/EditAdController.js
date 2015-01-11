@@ -1,22 +1,16 @@
 'use strict';
 
 adsApp.controller('EditAdController',
-	function EditAdController($scope, $routeParams, $http, $location, Auth, Towns, Categories, notifyService) {
+	function EditAdController($scope, $routeParams, $location, UserAds, Towns, Categories, notifyService) {
 
-		var request = {
-                    method: 'GET',
-                    url: 'http://softuni-ads.azurewebsites.net/api/user/Ads/' + $routeParams.id,
-                    headers: {
-                    	'Authorization': sessionStorage.header
-                    }
-                };
-			$http(request).
-			  	success(function(data, status, headers, config) {
-					$scope.ad = data;
-			  	}).
-			  	error(function(data, status, headers, config) {
-			    	notifyService.showError("User registration failed", data);
-			  	});
+		UserAds.getAd($routeParams.id,
+			function success(data) {
+                $scope.ad = data;
+            },
+            function error(err) {
+                //TODO
+            })
+		
 
 		Towns.getAllTowns(function success(data) {
                 //console.log(data);
@@ -36,21 +30,14 @@ adsApp.controller('EditAdController',
             });
 
 		$scope.editAd = function(ad) {
-			var request = {
-                    method: 'PUT',
-                    url: 'http://softuni-ads.azurewebsites.net/api/user/Ads/' + $routeParams.id,
-                    data: ad,
-                    headers: {
-                    	'Authorization': sessionStorage.header
-                    }
-                };
-			$http(request).
-			  	success(function(data, status, headers, config) {
-					notifyService.showInfo("successfully");
-			  	}).
-			  	error(function(data, status, headers, config) {
-			    	notifyService.showError("Edit failed", data);
-			  	});
+			UserAds.editAd($routeParams.id, ad,
+				function success(data) {
+	                notifyService.showInfo("successfully");
+					$location.path('/user/ads')
+	            },
+	            function error(err) {
+	                notifyService.showError("Edit failed", err);
+	            });
 		}
 	}
 );

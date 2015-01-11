@@ -1,0 +1,24 @@
+<div ng-controller="DeleteAdController">
+	<h1 class="text-center">My Ads</h1>
+	<div  class="col-md-8 col-md-offset-2">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">{{ad.title}}</h3>
+				<p class="pull-right date">{{ad.date | date : format : timezone}}</p>
+			</div>
+			<div class="panel-body">
+				<img class="img-home well" ng-if="!ad.imageDataUrl" src="http://spasitelbg.com/uploads/no_img.jpg">
+				<img class="img-home well" ng-if="ad.imageDataUrl" ng-src="{{ad.imageDataUrl}}">
+				<div class="well ad-info">
+					<p>{{ad.text}}</p>
+					<p>Category : {{ad.categoryName}}</p>
+					<p>Town : {{ad.townName}}</p>
+				</div>
+				<div class="btn-group-vertical ad-button">
+					<a class="btn btn-danger" ng-click="delete(ad.id)">Delete</a>
+					<a href="#/user/ads" class="btn btn-warning">Cancel</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

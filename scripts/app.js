@@ -22,5 +22,8 @@ var adsApp = angular
 	.when('/user/ads/edit/:id', {
 		templateUrl: 'templates/user/editAd.html'
 	})
+	.when('/user/ads/delete/:id', {
+		templateUrl: 'templates/user/deleteAd.html'
+	})
 	.otherwise({redirectTo: '/'});
 }).constant('pageSize', 5);

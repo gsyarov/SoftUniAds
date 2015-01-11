@@ -9,22 +9,14 @@ adsApp.controller('UserAdController',
 		};
 
 		$scope.reloadAds = function() {
-			var request = {
-                    method: 'GET',
-                    url: 'http://softuni-ads.azurewebsites.net/api/user/Ads',
-                    params: $scope.adsParams
-                    ,
-                    headers: {
-                      'Authorization': sessionStorage.header
-                    }
-                };
-      $http(request).
-          success(function(data, status, headers, config) {
+			UserAds.getAllAds($scope.adsParams,
+        function success(data) {
+            //notifyService.showInfo("successfully");
             $scope.ads = data;
-          }).
-          error(function(data, status, headers, config) {
-            console.log(data);
-          });
+        },
+        function error(err) {
+            notifyService.showError("Load failed", err);
+        });
 		};
 
 		$scope.reloadAds();
@@ -40,37 +32,25 @@ adsApp.controller('UserAdController',
     
 
     $scope.deactivate = function(id){
-      var request = {
-                    method: 'PUT',
-                    url: 'http://softuni-ads.azurewebsites.net/api/user/ads/deactivate/'+ id,
-                    headers: {
-                      'Authorization': sessionStorage.header
-                    }
-                };
-      $http(request).
-          success(function(data, status, headers, config) {
+      UserAds.deactivate(id,
+        function success(data) {
             notifyService.showInfo("Ad deactivate successful");
-          }).
-          error(function(data, status, headers, config) {
-            //TODO
-          });
+            $scope.reloadAds();
+        },
+        function error(err) {
+            notifyService.showError("failed", err);
+        });
     }
 
     $scope.publishAgain = function(id){
-      var request = {
-                    method: 'PUT',
-                    url: 'http://softuni-ads.azurewebsites.net/api/user/ads/PublishAgain/'+ id,
-                    headers: {
-                      'Authorization': sessionStorage.header
-                    }
-                };
-      $http(request).
-          success(function(data, status, headers, config) {
+      UserAds.publishAgain(id,
+        function success(data) {
             notifyService.showInfo("Ad Publish Again successful");
-          }).
-          error(function(data, status, headers, config) {
-            //TODO
-          });
+            $scope.reloadAds();
+        },
+        function error(err) {
+            notifyService.showError("failed", err);
+        });
     }
 		
 
