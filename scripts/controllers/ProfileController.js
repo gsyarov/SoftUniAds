@@ -1,7 +1,11 @@
 'use strict';
 
 adsApp.controller('ProfileController',
-	function ProfileController($scope, Towns, UserProfile, notifyService) {
+	function ProfileController($scope, $location, Auth, Towns, UserProfile, notifyService) {
+
+        if(!Auth.isLoggedIn()){
+            $location.path('/');
+        }
 
 		Towns.getAllTowns(function success(data) {
                 //console.log(data);

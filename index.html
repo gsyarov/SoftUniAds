@@ -20,12 +20,15 @@
 					</button>
 				</div>
 				<div id="navbar-main" class="navbar-collapse collapse">
-					<ul class="nav navbar-nav">
+					<ul class="nav navbar-nav" ng-hide="Auth.isLoggedIn()">
 						<li ng-class="{ active: isActive('/')}">
 							<a href="#/">Home</a>
 						</li>
 					</ul>
 					<ul class="nav navbar-nav" ng-show="Auth.isLoggedIn()">
+						<li ng-class="{ active: isActive('/')}">
+							<a href="#/user/home">Home</a>
+						</li>
 						<li ng-class="{ active: isActive('/user/ads')}">
 							<a href="#/user/ads">My Ads</a>
 						</li>

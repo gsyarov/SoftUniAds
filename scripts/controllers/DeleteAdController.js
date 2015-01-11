@@ -1,7 +1,11 @@
 'use strict';
 
 adsApp.controller('DeleteAdController',
-	function DeleteAdController($scope, $routeParams, $location, notifyService, UserAds) {
+	function DeleteAdController($scope, $routeParams, $location, Auth, notifyService, UserAds) {
+
+		if(!Auth.isLoggedIn()){
+            $location.path('/');
+        }
 
 		UserAds.getAd($routeParams.id,
 			function success(data) {

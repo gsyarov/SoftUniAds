@@ -13,6 +13,9 @@ var adsApp = angular
 	.when('/register', {
 		templateUrl: 'templates/register.html'
 	})
+	.when('/user/home', {
+		templateUrl: 'templates/home.html'
+	})
 	.when('/user/profile', {
 		templateUrl: 'templates/user/profile.html'
 	})

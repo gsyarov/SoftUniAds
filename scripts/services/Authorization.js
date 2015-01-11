@@ -6,13 +6,13 @@ adsApp.factory('Auth', function(Logout, $location, notifyService) {
 				sessionStorage.header = token;
 				sessionStorage.username = username;
 				notifyService.showInfo("Login successful");
-				$location.path('/')
+				$location.path('/user/home')
 		},
 		register: function(token, username) {
 				sessionStorage.header = token;
 				sessionStorage.username = username;
 				notifyService.showInfo("User registered successfully");
-				$location.path('/')
+				$location.path('/user/home')
 		},
 		logout: function() {
 			Logout.logout(

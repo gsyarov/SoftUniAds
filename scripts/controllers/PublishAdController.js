@@ -1,7 +1,11 @@
 'use strict';
 
 adsApp.controller('PublishAdController',
-	function PublishAdController($scope, $location, UserAds, Towns, Categories, notifyService) {
+	function PublishAdController($scope, $location, Auth, UserAds, Towns, Categories, notifyService) {
+
+		if(!Auth.isLoggedIn()){
+            $location.path('/');
+        }
 
 		Towns.getAllTowns(function success(data) {
                 //console.log(data);

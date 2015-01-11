@@ -1,7 +1,11 @@
 'use strict';
 
 adsApp.controller('EditAdController',
-	function EditAdController($scope, $routeParams, $location, UserAds, Towns, Categories, notifyService) {
+	function EditAdController($scope, $routeParams, $location, Auth, UserAds, Towns, Categories, notifyService) {
+
+		if(!Auth.isLoggedIn()){
+            $location.path('/');
+        }
 
 		UserAds.getAd($routeParams.id,
 			function success(data) {

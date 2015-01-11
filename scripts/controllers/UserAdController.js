@@ -1,7 +1,11 @@
 'use strict';
 
 adsApp.controller('UserAdController',
-	function UserAdController($scope, UserAds, Categories, Towns, pageSize, notifyService) {	
+	function UserAdController($scope, $location, Auth, UserAds, Categories, Towns, pageSize, notifyService) {	
+
+    if(!Auth.isLoggedIn()){
+            $location.path('/');
+        }
 
 		$scope.adsParams = {
 			'startPage' : 1,
